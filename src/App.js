@@ -9,6 +9,8 @@ import Registro from './pages/usuarios/Registro';
 import Login from './pages/usuarios/Login';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Usuarios from './pages/usuarios/Usuarios';
+import Inicio from './pages/Inicio';
+import Header from './components/Header';
 
 const queryClient = new QueryClient();
 
@@ -22,8 +24,11 @@ function App() {
 
         <div className="container">
 
+          <Header />
+
           <Routes>
-            <Route path='' element={<Navigate to='/productos' />} />
+            {/* <Route path='' element={<Navigate to='/productos' />} /> */}
+            <Route path='' element={<Inicio />} />
             <Route path='productos' element={<Productos />} />
             <Route path='productos/nuevo' element={<FormProductos />} />
             <Route path='productos/:productoId' element={<DetalleProducto />} />

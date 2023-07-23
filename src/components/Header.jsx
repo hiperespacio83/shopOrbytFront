@@ -7,7 +7,7 @@ const Header = () => {
        
         <div className={classes.body}>
             <header>
-                <h1>ShopOrbyt</h1>
+                <h1>ShopOrbit</h1>
                 <nav className="me-1">
                     <ul>
                     <Link to={'/'}>

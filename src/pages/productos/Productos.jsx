@@ -32,8 +32,19 @@ const Productos = () => {
         }
     }
 
-    return <div>
+    return <div className={classes.seccionProductos}>
         <h2>Lista de productos</h2>
+        <div className={classes.busqueda}>
+        <input type="text" placeholder="Busqueda por nombre"className="form-control" />
+        <select name="" id="" className="form-select">
+            <option value="">Selecciona una categoría</option>
+            <option value="Antihistaminicos">Antihístaminicos</option>
+            <option value="Antitérmicos">Antitérmicos</option>
+            <option value="Antiinflamatorios">Antiinflamatorios</option>
+        </select>
+        </div>
+        
+        
         <div className={classes.productos}>
             {arrProductos.map(producto => (
                 <div className={classes.producto} key={producto._id}>

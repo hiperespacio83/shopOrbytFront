@@ -3,7 +3,31 @@
     justify-content:center;
     flex-wrap:wrap;
     gap: 20px;
+    
 }
+
+.seccionProductos {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+   
+    
+    
+}
+.busqueda {
+    display: flex;
+    gap: 10px;
+    margin: 15px;
+   width: 50%;
+   justify-content: space-between;
+   align-items: center;
+   padding: 5px;
+}
+
+
 
 .producto {
     width: 250px;
@@ -13,4 +37,5 @@
 }
 h2 {
     text-align: center;
+    margin-top: 20px;
 }

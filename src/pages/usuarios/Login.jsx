@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { login } from "../../services/usuarios.service";
 import { useState } from "react";
 import { useLocalStorage } from "react-use";
+import classes from './usuarios.module.css'
 
 const Login = () => {
 
@@ -23,7 +24,8 @@ const Login = () => {
     }
 
     return (
-        <div className="row">
+        <div className={classes.top}>
+            <div className="row">
             <div className="col-md-4 col-12 offset-md-4">
                 <form onSubmit={handleSubmit(envioLogin)}>
                     <label className="form-label">
@@ -39,6 +41,8 @@ const Login = () => {
                 {error && <p>{error}</p>}
             </div>
         </div>
+        </div>
+        
 
     )
 }

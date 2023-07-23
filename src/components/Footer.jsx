@@ -4,7 +4,7 @@ const Footer = () => {
 
     return <div className={classes.footer}>
         
-            <p>&copy; 2023 Tienda de Parafarmacia</p>
+            <p>&copy; 2023 ShopOrbit</p>
         
         </div>
 

@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { registro } from "../../services/usuarios.service";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import classes from './usuarios.module.css'
 
 const Registro = () => {
 

@@ -23,11 +23,11 @@ function App() {
 
       <BrowserRouter>
 
-        <div>
+        <div className='wrapper'>
 
           <Header />
-
-          <Routes>
+            <div className='main'>
+              <Routes>
             {/* <Route path='' element={<Navigate to='/productos' />} /> */}
             <Route path='' element={<Inicio />} />
             <Route path='productos' element={<Productos />} />
@@ -38,6 +38,8 @@ function App() {
             <Route path='login' element={<Login />} />
             <Route path='usuarios' element={<Usuarios/>} />
           </Routes>
+            </div>
+          
 
           <Footer/>
 

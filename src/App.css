@@ -7,6 +7,24 @@
   pointer-events: none;
 }
 
+
+
+.main {
+  
+  background-image: url("../public/shop3.png");
+  
+  
+  background-position: center;
+  
+
+  
+  background-size: contain;
+  
+  min-height: 83vh;
+  
+
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

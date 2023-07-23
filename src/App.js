@@ -11,6 +11,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import Usuarios from './pages/usuarios/Usuarios';
 import Inicio from './pages/Inicio';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,7 @@ function App() {
 
       <BrowserRouter>
 
-        <div className="container">
+        <div>
 
           <Header />
 
@@ -37,6 +38,8 @@ function App() {
             <Route path='login' element={<Login />} />
             <Route path='usuarios' element={<Usuarios/>} />
           </Routes>
+
+          <Footer/>
 
         </div>
 

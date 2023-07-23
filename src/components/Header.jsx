@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import classes from './header.module.css';
 
 const Header = () => {
@@ -5,17 +6,25 @@ const Header = () => {
        
        
         <div className={classes.body}>
-            <div className={classes.header}>
+            <header>
                 <h1>ShopOrbyt</h1>
-                <nav className={classes.nav}>
+                <nav className="me-1">
                     <ul>
+                    <Link to={'/'}>
                         <li>Inicio</li>
+                    </Link>
+                    <Link to={'/productos'}>
                         <li>Productos</li>
-                        <li>Zona Cliente</li>
+                    </Link>
+                    <Link to={'/login'}>
+                        <li>Zona cliente</li>
+                    </Link>
+                    <Link to={'/contacto'}>
                         <li>Contacto</li>
+                    </Link>
                     </ul>
                 </nav>
-            </div>
+            </header>
             
           
         </div>

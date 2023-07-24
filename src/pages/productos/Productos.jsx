@@ -6,47 +6,72 @@ import Swal from "sweetalert2";
 
 const Productos = () => {
 
-    const [arrProductos,setArrProductos] = useState([]);
+    const [arrProductos, setArrProductos] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchCategory, setSearchCategory] = useState('');
 
     useEffect(() => {
         getAll()
-        .then(response => setArrProductos(response.data))
-        .catch(error => console.log(error))
-    },[]);
+            .then(response => setArrProductos(response.data))
+            .catch(error => console.log(error))
+    }, []);
 
     const borrarProducto = async (productoId) => {
         const alert = await Swal.fire({
-            title:'¿Estás seguro',
-            text:'Vas a borrar un producto',
-            icon:'warning',
-            showCancelButton:true,
-            confirmButtonText:'Borrar',
-            confirmButtonColor:'#FF0000'
+            title: '¿Estás seguro',
+            text: 'Vas a borrar un producto',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Borrar',
+            confirmButtonColor: '#FF0000'
         });
         if (alert.isConfirmed) {
-            const {data:dataBorrado} = await deleteById(productoId);
+            const { data: dataBorrado } = await deleteById(productoId);
             console.log(dataBorrado);
             // cargo de nuevo los productos
-            const {data} = await getAll();
+            const { data } = await getAll();
             setArrProductos(data);
         }
     }
 
+    const handleChange = (event) => {
+
+        setSearchTerm(event.target.value);  
+        }
+
+    const searchByCategory = (event) => {
+        setSearchCategory(event.target.value);
+    }    
+
+        let listaFiltrada = !searchTerm
+        ? arrProductos
+        : arrProductos.filter(producto =>
+            producto.nombre.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+          );
+
+            if (searchCategory) {
+                listaFiltrada = arrProductos.filter(producto => producto.categoria.toLowerCase().includes(searchCategory.toLocaleLowerCase()));
+            }
+
+       
+        
+
     return <div className={classes.seccionProductos}>
         <h2>Lista de productos</h2>
         <div className={classes.busqueda}>
-        <input type="text" placeholder="Busqueda por nombre"className="form-control" />
-        <select name="" id="" className="form-select">
-            <option value="">Selecciona una categoría</option>
-            <option value="Antihistaminicos">Antihístaminicos</option>
-            <option value="Antitérmicos">Antitérmicos</option>
-            <option value="Antiinflamatorios">Antiinflamatorios</option>
-        </select>
+            <input type="text" placeholder="Busqueda por nombre" className="form-control" onChange={handleChange} />
+            <select name="" id="" className="form-select" onChange={searchByCategory}>
+                <option value="">Todas las categorías</option>
+                <option value="Antihistaminicos">Antihístaminicos</option>
+                <option value="Antitérmicos">Antitérmicos</option>
+                <option value="Antiinflamatorios">Antiinflamatorios</option>
+                <option value="Antigripales">Antigripales</option>
+            </select>
         </div>
-        
-        
+
+
         <div className={classes.productos}>
-            {arrProductos.map(producto => (
+            {listaFiltrada.map(producto => (
                 <div className={classes.producto} key={producto._id}>
                     <h4>{producto.nombre}</h4>
                     <p>{producto.descripcion}</p>
@@ -60,8 +85,8 @@ const Productos = () => {
                     <Link to={`/productos/edit/${producto._id}`}>
                         <button className="btn btn-success ms-3">Editar</button>
                     </Link>
-                    <button onClick={()=>borrarProducto(producto._id)} className="btn btn-danger">Borrar</button>
-                    
+                    <button onClick={() => borrarProducto(producto._id)} className="btn btn-danger">Borrar</button>
+
                 </div>
             ))}
         </div>

@@ -17,7 +17,7 @@ const Header = () => {
                         <li>Productos</li>
                     </Link>
                     <Link to={'/login'}>
-                        <li>Zona cliente</li>
+                        <li>Zona Usuarios</li>
                     </Link>
                     <Link to={'/contacto'}>
                         <li>Contacto</li>

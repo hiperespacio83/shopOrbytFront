@@ -62,7 +62,7 @@ const Productos = () => {
             <input type="text" placeholder="Busqueda por nombre" className="form-control" onChange={handleChange} />
             <select name="" id="" className="form-select" onChange={searchByCategory}>
                 <option value="">Todas las categorías</option>
-                <option value="Antihistaminicos">Antihístaminicos</option>
+                <option value="Antihistamínicos">Antihistamínicos</option>
                 <option value="Antitérmicos">Antitérmicos</option>
                 <option value="Antiinflamatorios">Antiinflamatorios</option>
                 <option value="Antigripales">Antigripales</option>

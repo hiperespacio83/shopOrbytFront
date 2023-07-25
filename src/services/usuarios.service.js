@@ -7,6 +7,11 @@ const getUsuarios = async () => {
      return response.data;
 }
 
+const getUsuarioById = (userId) => {
+    return axios.get(`${baseUrl}/${userId}`);
+    
+}
+
 
 const registro = (formValues) => {
     return axios.post(`${baseUrl}/register`,formValues);
@@ -16,6 +21,11 @@ const login = (formValues) => {
     return axios.post(`${baseUrl}/login`,formValues);
 };
 
+const update = (userId, formValues) => {
+    return axios.put(`${baseUrl}/${userId}`, formValues);
+
+}
+
 export {
-    registro,login,getUsuarios
+    registro,login,getUsuarios,update,getUsuarioById
 }

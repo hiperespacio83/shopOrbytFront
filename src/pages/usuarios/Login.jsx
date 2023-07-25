@@ -3,48 +3,67 @@ import { login } from "../../services/usuarios.service";
 import { useState } from "react";
 import { useLocalStorage } from "react-use";
 import classes from './usuarios.module.css'
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import MenuCliente from "../zonacliente/MenuCliente";
 
 const Login = () => {
 
     const [error, setError] = useState(null);
-    const [token,setToken]= useLocalStorage('token');
-    const {register, handleSubmit} = useForm();
+    const [user, setUser] = useState(null);
+    const [token, setToken] = useLocalStorage('token');
+    const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
 
     const envioLogin = async (values) => {
-        const {data}= await login(values);
+        const { data } = await login(values);
         console.log(data);
 
-        if(data.fatal) {
+        if (data.fatal) {
             return setError(data.fatal);
         }
 
         // si el login es correcto recibo el token
         console.log(data.token);
         setToken(data.token);
+        console.log(data.user);
+        setUser(data.user);
+
+
+         await Swal.fire({ title: 'Logín realizado con éxito', text: data.success, icon: 'success' });
+       
+
     }
 
     return (
-        <div className={classes.top}>
-            <div className="row">
+    user==null ? 
+    <div className={classes.top}>
+        <div className="row">
             <div className="col-md-4 col-12 offset-md-4">
+                <h2>Login</h2>
                 <form onSubmit={handleSubmit(envioLogin)}>
                     <label className="form-label">
                         Email
                     </label>
-                    <input type="email" className="form-control" {...register('email')}/>
+                    <input type="email" className="form-control border border-info" {...register('email')} />
                     <label className="form-label">
                         Password
                     </label>
-                    <input type="password" className="form-control" {...register('password')}/>
-                    <input type="submit" className="btn btn-info"  />
+                    <input type="password" className="form-control border border-info" {...register('password')} />
+                    <input type="submit" className="btn btn-info mt-4" />
                 </form>
                 {error && <p>{error}</p>}
             </div>
+            <div className="col-md-4 col-12 offset-md-4 mt-4">
+                Si aún no eres cliente, <Link to={'/registro'}><strong>regístrate</strong></Link>
+            </div>
         </div>
-        </div>
-        
-
+    </div> :<MenuCliente user={user} /> 
     )
 }
+
+
+
+
 
 export default Login;

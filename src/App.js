@@ -12,6 +12,10 @@ import Usuarios from './pages/usuarios/Usuarios';
 import Inicio from './pages/Inicio';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import MenuCliente from './pages/zonacliente/MenuCliente';
+import ActualizaUsuario from './pages/usuarios/ActualizaUsuario.jsx';
+import Contacto from './pages/zonacliente/Contacto';
+import Dashboard from './pages/zonacliente/Dashboard';
 
 const queryClient = new QueryClient();
 
@@ -36,7 +40,11 @@ function App() {
             <Route path='productos/edit/:productoId' element={<ActualizaProducto />} />
             <Route path='registro' element={<Registro />} />
             <Route path='login' element={<Login />} />
+            <Route path='edit/:usuarioId' element={<ActualizaUsuario />} />
             <Route path='usuarios' element={<Usuarios/>} />
+            <Route path='menucliente/:usuarioId' element={<MenuCliente />} />
+            <Route path='contacto' element={<Contacto/>} />
+            <Route path='dashboard' element={<Dashboard />}/>
           </Routes>
             </div>
           

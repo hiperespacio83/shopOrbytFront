@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 import { useLocation, useParams } from "react-router-dom";
 import { getUsuarioById, update } from "../../services/usuarios.service";
 import Swal from "sweetalert2";
-import CryptoJS from 'crypto-js';
+
 
 const ActualizaUsuario = ({user}) => {
 
-    const {userId}= useParams();
+    
     const {register,handleSubmit,reset} = useForm();
     const [usuario,setUsuario] = useState(user);
     
@@ -26,6 +26,7 @@ const ActualizaUsuario = ({user}) => {
 
     const envioFormulario = async (values) => {
         const {data} = await update(usuario._id,values);
+        console.log(data);
 
         // gestion de error del servidor
 

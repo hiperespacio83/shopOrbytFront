@@ -17,3 +17,28 @@
 .container {
   margin-top: 50px;
 }
+
+.producto {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid lightseagreen;
+  padding: 10px 20px;
+  margin-right: 15px;
+ 
+
+}
+
+
+
+.productos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 60px;
+
+}

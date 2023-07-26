@@ -42,7 +42,7 @@ function App() {
             <Route path='login' element={<Login />} />
             <Route path='edit' element={<ActualizaUsuario />} />
             <Route path='usuarios' element={<Usuarios/>} />
-            <Route path='menucliente/:usuarioId' element={<MenuCliente />} />
+            <Route path='menucliente' element={<MenuCliente />} />
             <Route path='contacto' element={<Contacto/>} />
             <Route path='dashboard' element={<Dashboard />}/>
           </Routes>

@@ -4,109 +4,91 @@ import { useEffect, useState } from 'react';
 import { getUsuarioById } from '../../services/usuarios.service';
 import Dashboard from './Dashboard';
 import ActualizaUsuario from '../usuarios/ActualizaUsuario';
+import { getById } from '../../services/productos.service';
+import Login from '../usuarios/Login';
 
 
 
-const MenuCliente = ({user}) => {
+const MenuCliente = ({ user }) => {
 
-   
-    const navigate= useNavigate();
+
+    const navigate = useNavigate();
     const [usuario, setUsuario] = useState(user);
+    const [cesta, setCesta] = useState(user.cart);
+
 
     const logout = () => {
         // 2. Eliminar cualquier información de sesión del almacenamiento local.
         localStorage.removeItem('token');
+        localStorage.removeItem('role');
         navigate('/');
-        
-    };
-    
 
-    // useEffect(()=> {
-    //     getUsuarioById(usuario._id)
-    //     .then(({data}) => {
-    //         // esto es por si la respuesta lleva algun error por ejemplo si se mete un id que no existe
-    //         if (data.error) {
-    //             return setUsuario(null);
-    //         }
-    //         console.log(data);
-    //         setUsuario(data);
-    //         console.log(usuario);
-    //     })
-    //     .catch(error => console.log(error));
+    };
+
+
+    // useEffect(() => {
+
+    //     // getUsuarioById(usuario._id)
+    //     // .then(({data}) => {
+    //     //     // esto es por si la respuesta lleva algun error por ejemplo si se mete un id que no existe
+    //     //     if (data.error) {
+    //     //         return setUsuario(null);
+    //     //     }
+    //     //     console.log(data);
+    //     //     setUsuario(data);
+    //     //     console.log(usuario);
+    //     // })
+    //     // .catch(error => console.log(error));
     // }, []);
 
 
-    return ( 
-        usuario.role === "admin" ?
-    <Dashboard /> : <div className="container mt-5">
+    return (
+       usuario && usuario.role === "admin" ?
+            <Dashboard /> : <div className="container mt-5">
 
-        <div className="row mb-5 pt-5">
+                <div className="row mb-5 pt-5">
 
-            <div className='col-12 border border-3 rounded-4 border-info border-start'>
-                <div className={classes.ficha}>
+                    <div className='col-12 border border-3 rounded-4 border-info border-start'>
 
-                    <h3>Mis pedidos</h3>
-                    <button className='btn btn-info'>Acceder</button>
+
+                        <h2>Mi Cesta</h2>
+
+                        <ul>
+                            {cesta.map(producto => (
+                                <li>{producto}</li>
+                            ))}
+                        </ul>
+
+                    </div>
 
                 </div>
 
-            </div>
+                <div className="row mb-5">
 
-        </div>
+                    <div className='col-12 border border-3 rounded-4 border-info border-start pb-5 '>
 
-        <div className="row mb-5">
+                        <h2>Editar mi perfil</h2>
 
-            <div className='col-12 border border-3 rounded-4 border-info border-start pb-5 '>
+                        <ActualizaUsuario user={usuario} className='mt-2' />  
 
-                <h2>Editar mi perfil</h2>
+                    </div>
 
-                <ActualizaUsuario user={usuario} className='mt-2' />
-                {/* <div className={classes.ficha}>
+                </div>
 
-                    <h3>Mi perfil</h3>
-                    <Link to={{pathname:'/edit',state:{usuario:usuario}}}>
-                    <button className='btn btn-info'>Acceder</button>
-                    </Link>
-                    
-                    
+                <div className='row'>
 
-                </div> */}
-
-            </div>
-
-        </div>
-
-        <div className='row'>
-
-            <div className='col-12 d-flex justify-content-center'>
-
-               
-                <button className='btn btn-info' onClick={logout}>
-                    Cerrar sesión
-                </button>
-            
-            </div>
-
-           
+                    <div className='col-12 d-flex justify-content-center'>
 
 
+                        <button className='btn btn-info' onClick={logout}>
+                            Cerrar sesión
+                        </button>
 
-        </div>
+                    </div>
 
-
-
-
-
-
-    </div>)
-    
-    
-    
-
-
-
-
-
+                </div>
+</div>  
+            )
 
 }
 

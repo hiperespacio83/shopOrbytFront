@@ -9,6 +9,7 @@ const Dashboard = () => {
     const logout = () => {
         // 2. Eliminar cualquier información de sesión del almacenamiento local.
         localStorage.removeItem('token');
+        localStorage.removeItem('role');
         navigate('/');
         
     };
@@ -22,7 +23,10 @@ const Dashboard = () => {
                 <div className={classes.ficha}>
 
                     <h3>Gestión de usuarios</h3>
+                    <Link to={'/usuarios'}>
                     <button className='btn btn-info'>Acceder</button>
+                    </Link>
+                    
 
                 </div>
 
@@ -36,7 +40,7 @@ const Dashboard = () => {
                 <div className={classes.ficha}>
 
                     <h3>Gestión de productos</h3>
-                    <Link to={`/edit/`}>
+                    <Link to={`/productos`}>
                         <button className='btn btn-info'>Acceder</button>
                     </Link>
 
@@ -53,7 +57,7 @@ const Dashboard = () => {
                 <div className={classes.ficha}>
 
                     <h3>Gestión de pedidos</h3>
-                    <Link to={`/edit/`}>
+                    <Link to={``}>
                         <button className='btn btn-info'>Acceder</button>
                     </Link>
 

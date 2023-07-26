@@ -58,6 +58,7 @@ const FormProductos = () => {
                             <option value="Antihistamínicos">Antihistamínicos</option>
                             <option value="Antiinflamatorios">Antiinflamatorios</option>
                             <option value="Antitérmicos">Antitérmicos</option>
+                            <option value="Antitusivos">Antitusivos</option>
                         </select>
                     </div>
                     <div className="mb-3">

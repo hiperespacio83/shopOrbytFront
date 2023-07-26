@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { login } from "../../services/usuarios.service";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorage } from "react-use";
 import classes from './usuarios.module.css'
 import { Link, useNavigate } from "react-router-dom";
@@ -12,8 +12,15 @@ const Login = () => {
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
     const [token, setToken] = useLocalStorage('token');
+    const [role, setRole] = useLocalStorage('role');
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
+
+    useEffect(()=>{
+
+
+
+    },[]);
 
     const envioLogin = async (values) => {
         const { data } = await login(values);
@@ -28,6 +35,7 @@ const Login = () => {
         setToken(data.token);
         console.log(data.user);
         setUser(data.user);
+        setRole(data.user.role);
 
 
          await Swal.fire({ title: 'Logín realizado con éxito', text: data.success, icon: 'success' });
@@ -36,7 +44,7 @@ const Login = () => {
     }
 
     return (
-    user==null ? 
+     user === null ? 
     <div className={classes.top}>
         <div className="row">
             <div className="col-md-4 col-12 offset-md-4">

@@ -40,7 +40,7 @@ function App() {
             <Route path='productos/edit/:productoId' element={<ActualizaProducto />} />
             <Route path='registro' element={<Registro />} />
             <Route path='login' element={<Login />} />
-            <Route path='edit/:usuarioId' element={<ActualizaUsuario />} />
+            <Route path='edit' element={<ActualizaUsuario />} />
             <Route path='usuarios' element={<Usuarios/>} />
             <Route path='menucliente/:usuarioId' element={<MenuCliente />} />
             <Route path='contacto' element={<Contacto/>} />

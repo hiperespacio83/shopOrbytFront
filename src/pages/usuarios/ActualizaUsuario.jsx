@@ -1,25 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getUsuarioById, update } from "../../services/usuarios.service";
 import Swal from "sweetalert2";
+import CryptoJS from 'crypto-js';
 
-const ActualizaUsuario = () => {
+const ActualizaUsuario = ({user}) => {
 
-    const {userId} = useParams();
+    const {userId}= useParams();
     const {register,handleSubmit,reset} = useForm();
+    const [usuario,setUsuario] = useState(user);
+    
 
     useEffect(()=>{
-        getUsuarioById(userId)
-        .then(({data}) => {
-            console.log(data);
-            reset(data);
-        })
-        .catch(error => console.log(error));
+        // getUsuarioById(userId)
+        // .then(({data}) => {
+        //     console.log(data);
+        //     reset(data);
+        // })
+        // .catch(error => console.log(error));
+
+        reset(usuario);
+        
     },[]);
 
     const envioFormulario = async (values) => {
-        const {data} = await update(userId,values);
+        const {data} = await update(usuario._id,values);
 
         // gestion de error del servidor
 
@@ -30,7 +36,7 @@ const ActualizaUsuario = () => {
 
         //gestión de la edicion correcta
 
-        await Swal.fire({title:'Edición correcta', text: 'Se ha editado correctamente el producto', icon:'success',confirmButtonText:'Aceptar'});
+        await Swal.fire({title:'Edición correcta', text: 'Has editado correctamente tus datos', icon:'success',confirmButtonText:'Aceptar'});
         
     }
 

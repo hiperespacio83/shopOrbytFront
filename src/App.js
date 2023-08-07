@@ -16,6 +16,9 @@ import MenuCliente from './pages/zonacliente/MenuCliente';
 import ActualizaUsuario from './pages/usuarios/ActualizaUsuario.jsx';
 import Contacto from './pages/zonacliente/Contacto';
 import Dashboard from './pages/zonacliente/Dashboard';
+import Bandeja from './pages/zonacliente/Bandeja';
+import Pedidos from './pages/zonacliente/Pedidos';
+import ProductosCompra from './pages/productos/ProductosCompra';
 
 const queryClient = new QueryClient();
 
@@ -45,6 +48,9 @@ function App() {
             <Route path='menucliente' element={<MenuCliente />} />
             <Route path='contacto' element={<Contacto/>} />
             <Route path='dashboard' element={<Dashboard />}/>
+            <Route path='bandeja' element={<Bandeja />} />
+            <Route path='pedidos' element={<Pedidos />} />
+            <Route path='productoscompra' element={<ProductosCompra />}/> 
           </Routes>
             </div>
           

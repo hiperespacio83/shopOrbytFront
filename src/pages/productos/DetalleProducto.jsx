@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getById } from "../../services/productos.service";
 
 const DetalleProducto = () => {
 
     const [producto, setProducto] = useState(null);
+    const navigate = useNavigate();
 
     const { productoId } = useParams();
 
@@ -20,6 +21,10 @@ const DetalleProducto = () => {
             .catch(error => console.log(error));
     }, []);
 
+    const handleBack = ()=> {
+        navigate(-1);
+    }
+
     return <div className="container mt-5">
         {producto ?
             <div className="row">
@@ -29,9 +34,9 @@ const DetalleProducto = () => {
                     <p>Categoría: {producto.categoria}</p>
                     <p>Precio: {producto.precio} euros</p>
                     <p>Stock: {producto.stock} unidades</p>
-                    <Link to='/productos'>
-                        <button className="btn btn-info mb-5">Volver</button>
-                    </Link>
+                    
+                        <button className="btn btn-info mb-5" onClick={handleBack}>Volver</button>
+                    
                 </div>
 
 

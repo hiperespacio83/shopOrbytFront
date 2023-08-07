@@ -33,7 +33,7 @@ const ActualizaProducto = () => {
         //gestión de la edicion correcta
 
         await Swal.fire({title:'Edición correcta', text: 'Se ha editado correctamente el producto', icon:'success',confirmButtonText:'Aceptar'});
-        navigate(`/productos/${productoId}`);
+        navigate(`/productos`);
     }
 
     return <div className="row">

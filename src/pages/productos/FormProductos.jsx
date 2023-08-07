@@ -18,6 +18,10 @@ const FormProductos = () => {
 
     const navigate = useNavigate();
 
+    const handleBack = () => {
+        navigate(-1);
+    }
+
     // envio del formulario al back
 
     const envioFormulario = async (values) => {
@@ -69,7 +73,7 @@ const FormProductos = () => {
                         <label className="form-label">Disponible</label>
                         <input className="form-control" type="boolean" {...register('disponible')} />
                     </div>
-                    <input type="submit" value="Enviar" />
+                    <input className="btn btn-info" type="submit" value="Enviar" />
                     <div>
                         {errors.map(error => (
                             <p>{error.msg}</p>
@@ -77,6 +81,7 @@ const FormProductos = () => {
                     </div>
 
                 </form>
+                <button className="btn btn-dark mt-2" onClick={handleBack}>Volver</button>
             </div>
         </div>
 

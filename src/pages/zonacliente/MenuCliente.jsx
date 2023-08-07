@@ -51,7 +51,7 @@ const MenuCliente = ({ user }) => {
                     <div className='col-12 border border-3 rounded-4 border-info border-start'>
 
 
-                        <h2>Mi Cesta</h2>
+                        <h2>Mi cesta</h2>
 
                         <ul>
                             {cesta.map(producto => (

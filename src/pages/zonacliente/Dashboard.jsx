@@ -11,7 +11,7 @@ const Dashboard = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('role');
         navigate('/');
-        
+
     };
 
 
@@ -24,9 +24,9 @@ const Dashboard = () => {
 
                     <h3>Gestión de usuarios</h3>
                     <Link to={'/usuarios'}>
-                    <button className='btn btn-info'>Acceder</button>
+                        <button className='btn btn-info'>Acceder</button>
                     </Link>
-                    
+
 
                 </div>
 
@@ -57,7 +57,24 @@ const Dashboard = () => {
                 <div className={classes.ficha}>
 
                     <h3>Gestión de pedidos</h3>
-                    <Link to={``}>
+                    <Link to={`/pedidos`}>
+                        <button className='btn btn-info'>Acceder</button>
+                    </Link>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div className="row mb-5">
+
+            <div className='col-12 border border-3 rounded-4 border-info border-start '>
+                <div className={classes.ficha}>
+
+                    <h3>Bandeja de entrada</h3>
+                    <Link to={`/bandeja`}>
                         <button className='btn btn-info'>Acceder</button>
                     </Link>
 
@@ -71,14 +88,14 @@ const Dashboard = () => {
 
             <div className='col-12 d-flex justify-content-center'>
 
-               
+
                 <button className='btn btn-info' onClick={logout}>
                     Cerrar sesión
                 </button>
-            
+
             </div>
 
-           
+
 
 
 
